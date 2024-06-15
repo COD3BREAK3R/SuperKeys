@@ -1,0 +1,96 @@
+/*=============================================
+=                MARK:General           =
+=============================================*/
+
+@mixin iconoPopup ($color) {
+    &__icono {
+        margin-bottom  : -20px;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        @include svg($color);
+
+        svg {
+            width: 50px;
+        }
+    }
+}
+
+@mixin botonPoup($color) {
+    button {
+        @extend .login__Formulario__Boton;
+        border          : none;
+        color           : white;
+        font-weight     : bold;
+        background-color: darken($color, 15%);
+        @include oscurecerConHover(fondo, $color, 25%);
+
+    }
+}
+
+@mixin parrafoPopup($color) {
+    color: darken($color, 10%);
+
+}
+
+@mixin ocultarElemento {
+    opacity   : 0;
+    transition: all 0.3s;
+}
+
+/*============  End of General  =============*/
+
+.popup {
+    z-index         : 100;
+    position        : absolute;
+    width           : 100%;
+    height          : 100vh;
+    background-color: #646464bb;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+
+    .error {
+        color           : $eliminarRojo;
+        margin          : 5%;
+        background-color: $inputs;
+        display         : flex;
+        flex-direction  : column;
+        gap             : 20px;
+        padding         : 30px;
+        border-radius   : 10px;
+        text-align      : center;
+        max-width       : 400px;
+        transition      : all 0.5s;
+
+        @include iconoPopup($eliminarRojo);
+        @include parrafoPopup($eliminarRojo);
+        @include botonPoup($eliminarRojo);
+
+    }
+
+    /* Registro
+    -------------------------------------------------- */
+
+    .registro {
+        @extend .error;
+        color: $textoAzul;
+
+        @include iconoPopup($textoAzul);
+        @include parrafoPopup($textoAzul);
+        @include botonPoup($textoAzul);
+    }
+
+    /* Ocultar Error
+    -------------------------------------------------- */
+
+    .ocultarPopUp {
+        display   : none;
+        transition: all 0.3s;
+
+    }
+
+    .opacidadPopUp {
+        @include ocultarElemento();
+    }
+}

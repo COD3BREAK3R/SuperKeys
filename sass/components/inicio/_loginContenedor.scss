@@ -1,0 +1,123 @@
+/*=============================================
+=                   Funciones                   =
+=============================================*/
+
+@mixin contenedor($padding) {
+    height         : 100%;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    padding        : $padding;
+}
+
+/* Subsection
+-------------------------------------------------- */
+
+@mixin borderRadiusLogin($superiorDerecho: null, $inferiorIzquierdo: null) {
+    @if $superiorDerecho {
+        border-radius          : 0;
+        border-top-right-radius: $superiorDerecho;
+        border-top-left-radius : $superiorDerecho;
+
+        @at-root .login__Formulario {
+            border-radius             : 0;
+            border-bottom-right-radius: $superiorDerecho;
+            border-bottom-left-radius : $superiorDerecho;
+        }
+    }
+
+    @if $inferiorIzquierdo {
+        border-radius            : 0;
+        border-bottom-left-radius: $inferiorIzquierdo;
+        border-top-left-radius   : $inferiorIzquierdo;
+
+        @at-root .login__Formulario {
+            border-radius             : 0;
+            border-bottom-right-radius: $inferiorIzquierdo;
+            border-top-right-radius   : $inferiorIzquierdo;
+        }
+    }
+
+    @if $superiorDerecho==null and $inferiorIzquierdo==null {
+        border-radius: 0;
+
+        @at-root .login__Formulario {
+            border-radius: 0;
+        }
+    }
+}
+
+/* Oscurecer en Hover
+-------------------------------------------------- */
+
+@mixin oscurecerConHover ($elemento, $color, $cantidad: 10%, $duracion: 0.5s) {
+    $propiedad: if($elemento==fondo, background-color, color);
+
+    &:hover {
+        @if $elemento==fondo {
+            background-color: darken($color, $cantidad);
+        }
+
+        @else if $elemento==texto {
+            color: darken($color, $cantidad);
+        }
+    }
+
+    transition: $propiedad $duracion;
+}
+
+/* End of Oscurecer en Hover
+-------------------------------------------------- */
+
+
+/*============  End of Funciones  =============*/
+
+.login {
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+    height               : 70%;
+    color                : white;
+
+
+    /* Resposive
+    -------------------------------------------------- */
+
+    @media (width < #{$xl}) {
+        padding-left : 5vw;
+        padding-right: 5vw;
+    }
+
+    @media (width < #{$lg}) {
+        grid-template-columns: 1fr;
+        grid-template-rows   : 1fr 1fr;
+        max-width            : 500px;
+        height               : 100%;
+        padding-top          : 10%;
+        padding-bottom       : 10%;
+    }
+
+    @media (width < #{$sm}) {
+        padding     : 0;
+        height      : 80%;
+        margin-left : 20px;
+        margin-right: 20px;
+        font-size   : 0.85rem;
+    }
+
+    @media (width < #{$ssm}) {
+        padding     : 0;
+        height      : 100%;
+        margin-left : 0;
+        margin-right: 0;
+    }
+
+    /* Especial
+    -------------------------------------------------- */
+    @media (height <=#{$lg}) {
+        & {
+            padding: 0;
+            height : 100vh;
+        }
+    }
+}
+

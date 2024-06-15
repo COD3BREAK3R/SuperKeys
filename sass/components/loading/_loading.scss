@@ -1,0 +1,24 @@
+.loading {
+    fill           : none;
+    stroke         : white;
+    stroke-linecap : round;
+    stroke-linejoin: round;
+    stroke-width   : 2;
+    animation      : spin 3s linear infinite;
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.eliminando {
+    @extend .loading;
+    stroke-width: 2.8;
+    font-size: 1.1em;
+}

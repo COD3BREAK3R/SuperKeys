@@ -1,0 +1,224 @@
+/*=============================================
+=                   MARK:SVG                  =
+=============================================*/
+
+@mixin svg($color) {
+    span {
+        display     : flex;
+        fill        : $color;
+        padding-left: 1%;
+        align-items : center;
+    }
+}
+
+/*============  End of SVG  =============*/
+
+.login__Formulario {
+
+    @include contenedor(5vw);
+
+    background-color: white;
+    text-align      : center;
+
+    /* MARK:Encabezado
+    -------------------------------------------------- */
+
+    &__Encabezado {
+        color: $textoAzul;
+
+    }
+
+    &__Titulo {
+        margin-bottom  : 20px;
+        display        : flex;
+        justify-content: center;
+
+        @include svg($textoAzul);
+
+    }
+
+    &__Descripcion {
+        color : $TextoAlt;
+        height: 85px;
+
+        &.oculta {
+            display: none;
+        }
+
+        a {
+            color: $TextoAlt;
+        }
+    }
+
+    &__Error {
+        background-color: lighten($eliminarRojo, 10%);
+        border-radius   : 5px;
+        display         : flex;
+        flex-direction  : column;
+        gap             : 5px;
+        padding         : 3%;
+
+        @include svg(white);
+
+
+        p {
+            color: white;
+
+            &.oculto {
+                display: none;
+            }
+        }
+
+        &__Titulo {
+            font-size      : 1.3em;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+        }
+
+        &.oculto {
+            display: none;
+        }
+
+        &__Parrafo--Oculto {
+            display: none;
+        }
+    }
+
+    /* MARK:Inputs
+    -------------------------------------------------- */
+
+    &__Inputs {
+        display       : flex;
+        flex-direction: column;
+        gap           : 20px;
+        padding-top   : 15%;
+        // --------------------
+
+        input {
+            height              : 45px;
+            font-size           : 20px;
+            color               : gray;
+            letter-spacing      : 2px;
+            padding-inline-start: 10px;
+
+            // --------------------
+            border: {
+                left  : 5px solid $textoAzul;
+                right : none;
+                top   : none;
+                bottom: none;
+            }
+
+            // --------------------
+            background-color: $inputs;
+        }
+
+        // --------------------
+        input:focus {
+            outline: none;
+        }
+
+        input::placeholder {
+            color: $TextoGris;
+        }
+
+        /* Input Error
+        -------------------------------------------------- */
+
+        input.error {
+            // --------------------
+            background-color: lighten($eliminarRojo, 35%);
+            color           : $eliminarRojo;
+
+            // --------------------
+            border: {
+                left: 5px solid $eliminarRojo;
+            }
+
+            // --------------------
+            &::placeholder {
+                color: $eliminarRojo;
+            }
+        }
+
+        /* End of Input Error
+        -------------------------------------------------- */
+    }
+
+    /* MARK:Botones Inferiores
+    -------------------------------------------------- */
+
+    &__Boton {
+        width           : 100%;
+        background-color: $textoAzul;
+        padding         : 12px;
+        text-transform  : uppercase;
+        border-radius   : 50px;
+        cursor          : pointer;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        user-select     : none;
+
+        @include oscurecerConHover(fondo, $textoAzul);
+        @include svg(white);
+
+        &.deshabilitado {
+            @extend .login__Formulario__Boton;
+            @include oscurecerConHover(fondo, $TextoAlt, 0%);
+
+            background-color: $TextoAlt;
+            cursor          : not-allowed;
+            pointer-events  : none;
+
+        }
+    }
+
+    // Cambiar a Registro
+
+    &__Change {
+        color     : $TextoAlt;
+        cursor    : pointer;
+        margin-top: 2.5%;
+        @include oscurecerConHover(texto, $TextoAlt, 20%);
+        user-select: none;
+    }
+
+    /*=============================================
+    =                  MARK:Responsive            =
+    =============================================*/
+
+    @media (width < #{$ssm}) {
+        @include contenedor(3vw);
+
+    }
+
+    @media (width < #{$lg}) {
+        &__Inputs {
+            padding-top: 10%;
+        }
+
+        &__Titulo {
+            margin-bottom: 5px;
+        }
+
+        &__Change {
+            margin-top: 3.5%;
+        }
+
+    }
+
+    /*============  End of Responsive  =============*/
+
+}
+
+/*=============================================
+=                  MARK:Especial              =
+=============================================*/
+
+.quitarBorderRadius {
+    border-radius: 0;
+}
+
+/*============  End of Especial  =============*/

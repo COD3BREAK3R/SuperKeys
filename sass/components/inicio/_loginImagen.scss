@@ -1,0 +1,38 @@
+.login__Imagen {
+
+    &__Contenedor {
+        background: {
+            image   : url(#{$dirRaiz}img/2762370.png);
+            position: center;
+            size    : cover;
+        }
+
+        @include borderRadiusLogin(null, 10px);
+
+    }
+
+    &__Textos {
+
+        @include contenedor(4vw);
+
+        text-align: center;
+        gap       : 3%;
+    }
+
+    /* Responsive
+    -------------------------------------------------- */
+
+    @media (width < #{$lg}) {
+
+        &__Contenedor {
+            @include borderRadiusLogin(10px, null);
+        }
+    }
+
+    @media (width < #{$ssm}) {
+
+        &__Contenedor {
+            @include borderRadiusLogin(null, null);
+        }
+    }
+}

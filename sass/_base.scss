@@ -1,0 +1,46 @@
+/*=============================================
+=                   Colores                   =
+=============================================*/
+
+$textoAzul   : #097FF5;
+$eliminarRojo: #E93F69;
+$sucess      : #29C195;
+$TextoGris   : #D0D0D0;
+$TextoAlt    : #A4B6D6;
+$fondo       : #E7ECF9;
+$inputs      : #F0F0F0;
+
+/*============  End of Colores  =============*/
+
+* {
+  margin                     : 0;
+  padding                    : 0;
+  box-sizing                 : border-box;
+  font-family                : 'Rubik', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+  max-width       : 1200px;
+  height          : 100vh;
+  margin          : 0 auto;
+  background-color: $fondo;
+}
+
+$dirRaiz: '../';
+
+/*=============================================
+=                   Breakpoints                   =
+=============================================*/
+
+$xl  : 1200px;
+$lg  : 720px;
+$md  : 620px;
+$md2 : 670px;
+$sm  : 350px;
+$ssm : 290px;
+
+/*============  End of Breakpoints  =============*/

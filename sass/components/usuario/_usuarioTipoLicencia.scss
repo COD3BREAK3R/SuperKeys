@@ -1,0 +1,155 @@
+/*=============================================
+=                   MARK:General               =
+=============================================*/
+
+.btnRedondos {
+    padding        : 10px;
+    border-radius  : 40px;
+    display        : flex;
+    justify-content: center;
+    cursor         : pointer;
+    box-shadow     : 0 2px 4px rgba(black, 0.2);
+    user-select    : none;
+
+}
+
+/*=============================================
+=                   MARK:Estilos              =
+=============================================*/
+
+.usuario {
+
+    &__TipoLicencia {
+        color         : darken($textoAzul, 20%);
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
+        padding-top   : 5%;
+        text-align    : center;
+    }
+
+    &__FormularioTipoLiencia {
+        display        : flex;
+        justify-content: center;
+        padding-top    : 5px;
+        gap            : 5%;
+        min-width      : 280px;
+    }
+
+    &__OpcionTipoLicencia {
+        @extend .btnRedondos;
+        position        : relative;
+        background-color: lighten($TextoGris, 10%);
+        transition      : background-color 0.5s;
+
+        @include hoverConMouse {
+            @include oscurecerConHover('fondo', lighten($TextoGris, 10%), 7%);
+
+        }
+
+        ;
+
+        // --------------
+        input {
+            display: none;
+
+            &:checked+label:before {
+                border-color: $textoAzul;
+            }
+
+            &:checked+label:after {
+                background-color: $textoAzul;
+                transform       : translate(-50%, -50%) scale(1);
+            }
+
+        }
+
+        // --------------
+
+
+        label {
+            position    : relative;
+            padding-left: 25px;
+            cursor      : pointer;
+            display     : flex;
+            align-items : center;
+
+            svg {
+                fill : currentColor;
+                width: 1.2em;
+            }
+
+            &:before,
+            &:after {
+                content      : "";
+                position     : absolute;
+                top          : 50%;
+                left         : 50%;
+                transform    : translate(-50%, -50%);
+                border-radius: 50%;
+                transition   : all 0.3s;
+                left         : 10px;
+            }
+
+            &:before {
+                width           : 15px;
+                height          : 15px;
+                border          : 2px solid darken($TextoAlt, 10%);
+                background-color: white;
+            }
+
+            &:after {
+
+                width    : 9px;
+                height   : 9px;
+                transform: translate(-50%, -50%) scale(0);
+                z-index  : 1;
+            }
+        }
+
+        // --------------
+        &--active {
+            @extend .usuario__OpcionTipoLicencia;
+
+            @include hoverConMouse {
+                @include oscurecerConHover('fondo', lighten($textoAzul, 30%), 10%)
+            }
+
+            ;
+
+            background-color: lighten($textoAzul, 30%);
+
+            label:before {
+                border: 2px solid $textoAzul;
+            }
+        }
+
+        // --------------
+    }
+
+    &__BtnGenerarLicencia {
+        @extend .btnRedondos;
+        margin-top      : 10px;
+        width           : 265px;
+        background-color: $textoAzul;
+        color           : white;
+        font-size       : 1.2em;
+        font-weight     : bold;
+        display         : flex;
+        align-items     : center;
+        @include oscurecerConHover('fondo', $textoAzul, 20%);
+
+        box-shadow: 0 2px 4px rgba(black, 0.3);
+
+        svg {
+            width: 1em;
+            fill : currentColor;
+        }
+
+        .loading {
+            font-size   : 1.2em;
+            stroke-width: 2.8;
+        }
+    }
+
+}
