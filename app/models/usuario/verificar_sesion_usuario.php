@@ -1,6 +1,6 @@
 <?php
 
 if (!isset($_SESSION['usuario'])) {
-    header("Location: /Clipcuote");
+    header("Location: /Login_PHP");
     exit();
 }
